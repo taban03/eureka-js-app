@@ -21,10 +21,11 @@ const client = new Eureka({
     // application instance information
     instance: {
         instanceId: "localhost:samplenodeservice:8081",
-        app: "samplenodeservice",
+        app: "SAMPLENODESERVICE",
         hostName: "localhost",
         ipAddr: "127.0.0.1",
-        vipAddress: "localhost",
+        vipAddress: "samplenodeservice",
+        secureVipAddress: "samplenodeservice",
         status: "UP",
         port: {
             "$": 0,
@@ -38,14 +39,10 @@ const client = new Eureka({
             '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
             name: 'MyOwn'
         },
-        leaseInfo: {
-            durationInSecs: 90, // 3 * heartbeatInterval
-            renewalIntervalInSecs: 30 // heartbeatInterval
-        },
         metadata: {
             "routed-services.1.gateway-url": "/api/v1",
             "routed-services.1.service-url": "/",
-            
+
             'mfaas.discovery.catalogUiTile.id': 'samplenodeservice',
             'mfaas.discovery.catalogUiTile.title': 'Zowe Sample Node Service',
             'mfaas.discovery.catalogUiTile.description': 'Sample service running '
