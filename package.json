@@ -1,0 +1,19 @@
+{
+  "name": "eureka-js-app",
+  "version": "1.0.0",
+  "description": "Netflix Eureka JS sample for API Mediation Layer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jandadav/eureka-js-app.git"
+  },
+  "author": "David Janda",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jandadav/eureka-js-app/issues"
+  },
+  "homepage": "https://github.com/jandadav/eureka-js-app#readme"
+}
