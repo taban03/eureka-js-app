@@ -15,4 +15,5 @@ It should make the process of integrating to API Mediation Layer or Zowe easy.
 3) Run it! `npm run api-layer`
 
 4) Clone this sample
-5) Run it! `npm start`
+5) Install dependencies `npm install`
+6) Run it! `npm start`
