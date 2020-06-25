@@ -20,29 +20,43 @@ let tlsOptions = {
 const client = new Eureka({
     // application instance information
     instance: {
-        instanceId: "localhost:samplenodeservice:8543",
-        app: "samplenodeservice",
+        instanceId: "localhost:samplenodeservice:8081",
+        app: "SAMPLENODESERVICE",
         hostName: "localhost",
         ipAddr: "127.0.0.1",
-        vipAddress: "localhost",
+        vipAddress: "samplenodeservice",
+        secureVipAddress: "samplenodeservice",
         status: "UP",
         port: {
-            "$": 8081,
-            "@enabled": true
-        },
-        securePort: {
             "$": 0,
             "@enabled": false
+        },
+        securePort: {
+            "$": 8081,
+            "@enabled": true
         },
         dataCenterInfo: {
             '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
             name: 'MyOwn'
         },
-        leaseInfo: {
-            durationInSecs: 90, // 3 * heartbeatInterval
-            renewalIntervalInSecs: 30 // heartbeatInterval
+        metadata: {
+            "routed-services.1.gateway-url": "/api/v1",
+            "routed-services.1.service-url": "/",
+
+            'mfaas.discovery.catalogUiTile.id': 'samplenodeservice',
+            'mfaas.discovery.catalogUiTile.title': 'Zowe Sample Node Service',
+            'mfaas.discovery.catalogUiTile.description': 'Sample service running '
+                + 'under NodeJS and registering into API Mediation Layer\'s Discovery service ',
+            'mfaas.discovery.catalogUiTile.version': '1.0.0',
+
+            'mfaas.discovery.service.title': 'Zowe Sample Node Service',
+            'mfaas.discovery.service.description': 'The Proxy Server is an HTTP, '
+                + 'HTTPS, and Websocket server built upon NodeJS and ExpressJS.',
+
+            'mfaas.api-info.apiVersionProperties.v1.title': 'Zowe Sample Node Service API',
+            'mfaas.api-info.apiVersionProperties.v1.description': 'An API for the Zowe Sample Node Service ',
+            'mfaas.api-info.apiVersionProperties.v1.version': '1.0.0'
         },
-        metadata: {},
     },
     eureka: {
         // eureka server host / port
