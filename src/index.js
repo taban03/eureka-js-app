@@ -5,6 +5,10 @@ const fs = require('fs')
     , keyFile = path.resolve(__dirname, '../ssl/localhost.keystore.key')
     , caFile = path.resolve(__dirname, '../ssl/localhost.pem')
 
+const server = require('./server');
+server.startServer();
+
+
 let tlsOptions = {
     cert: fs.readFileSync(certFile),
     key: fs.readFileSync(keyFile),
