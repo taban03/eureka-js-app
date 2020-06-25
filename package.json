@@ -2,8 +2,9 @@
   "name": "eureka-js-app",
   "version": "1.0.0",
   "description": "Netflix Eureka JS sample for API Mediation Layer",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "NODE_DEBUG=request node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jandadav/eureka-js-app/issues"
   },
-  "homepage": "https://github.com/jandadav/eureka-js-app#readme"
+  "homepage": "https://github.com/jandadav/eureka-js-app#readme",
+  "dependencies": {
+    "eureka-js-client": "^4.5.0"
+  }
 }
