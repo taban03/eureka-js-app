@@ -99,3 +99,13 @@ ssl:
   keyPassword: password
 
 ```
+
+## How to test 
+
+1. From the root project, run `npm link`. It will generate the npm package `eureka-js-app` and publish into your local `nodemodules` directory (you will see the location once the command is executed).
+2. Clone the https://github.com/taban03/helloworld-expressjs repo
+3. Modify the `package.json` present in the helloworld-expressjs project by setting the correct location of the `eureka-js-app` npm package.
+```json
+ "eureka-js-app": "file:../../../../../../usr/local/lib/node_modules/eureka-js-app",
+```
+4. Run `npm install` and `node index.js` to run the sample service.
