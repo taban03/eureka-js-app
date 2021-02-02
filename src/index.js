@@ -1,22 +1,37 @@
 const Eureka = require('eureka-js-client').Eureka;
-const fs = require('fs')
-    , path = require('path')
-    , certFile = path.resolve(__dirname, '../ssl/localhost.keystore.cer')
-    , keyFile = path.resolve(__dirname, '../ssl/localhost.keystore.key')
-    , caFile = path.resolve(__dirname, '../ssl/localhost.pem')
+const yaml = require('js-yaml');
+const fs = require('fs');
 
+let certFile = null;
+let keyFile = null;
+let caFile = null;
+let passPhrase = null;
 
+// Read ssl service configuration
+function readTlsProps() {
+    try {
+        const config = yaml.safeLoad(fs.readFileSync('config/service-configuration.yml', 'utf8'));
+        certFile = config.ssl.certificate;
+        keyFile = config.ssl.keystore;
+        caFile = config.ssl.caFile;
+        passPhrase = config.ssl.keyPassword;
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+readTlsProps();
 
 let tlsOptions = {
     cert: fs.readFileSync(certFile),
     key: fs.readFileSync(keyFile),
-    passphrase: 'password',
+    passphrase: passPhrase,
     ca: fs.readFileSync(caFile)
-}
+};
 
 const client = new Eureka({
-    filename: 'eureka-client',
-    cwd: '/Users/at670475/IntelliJProjects/nodejs_enabler/eureka-js-app/helloworld-expressjs',
+    filename: 'service-configuration',
+    cwd: 'config/',
     eureka: {
         // eureka server host / port
         host: 'localhost',
