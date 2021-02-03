@@ -32,13 +32,6 @@ let tlsOptions = {
 const client = new Eureka({
     filename: 'service-configuration',
     cwd: 'config/',
-    eureka: {
-        // eureka server host / port
-        host: 'localhost',
-        port: 10011,
-        servicePath: '/eureka/apps/',
-        ssl: true
-    },
     requestMiddleware: (requestOpts, done) => {
         done(Object.assign(requestOpts, tlsOptions));
     }
