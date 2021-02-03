@@ -10,7 +10,7 @@ let passPhrase = null;
 // Read ssl service configuration
 function readTlsProps() {
     try {
-        const config = yaml.safeLoad(fs.readFileSync('config/service-configuration.yml', 'utf8'));
+        const config = yaml.load(fs.readFileSync('config/service-configuration.yml', 'utf8'));
         certFile = config.ssl.certificate;
         keyFile = config.ssl.keystore;
         caFile = config.ssl.caFile;
